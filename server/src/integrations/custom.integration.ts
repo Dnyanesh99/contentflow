@@ -52,6 +52,6 @@ export const handleCustomCode = async (
       output: result,
     };
   } catch (err: any) {
-    throw new Error(`Custom Logic Error: ${err.message || String(err)}`);
+    throw new Error(`Custom Logic Error: ${err.message || String(err)}`, { cause: err });
   }
 };

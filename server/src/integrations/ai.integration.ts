@@ -73,6 +73,6 @@ export const handleAIPrompt = async (config: AITaskConfig, context: Record<strin
       `[AI Integration] Failed to execute ${config.provider}/${config.model}:`,
       error,
     );
-    throw new Error(`AI execution failed: ${error.message || String(error)}`);
+    throw new Error(`AI execution failed: ${error.message || String(error)}`, { cause: error });
   }
 };
