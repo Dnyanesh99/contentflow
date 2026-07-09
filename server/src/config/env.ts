@@ -1,7 +1,5 @@
 export const ENV = {
   PORT: process.env.PORT || 3000,
-  OPENAI_API_KEY: process.env.OPENAI_API_KEY || 'MISSING_KEY',
-  ANTHROPIC_API_KEY: process.env.ANTHROPIC_API_KEY || 'MISSING_KEY',
   CONTENTFUL_ACCESS_TOKEN: process.env.CONTENTFUL_ACCESS_TOKEN,
   UPSTASH_REDIS_URL: process.env.UPSTASH_REDIS_URL || 'redis://localhost:6379',
   DATABASE_URL: process.env.DATABASE_URL,

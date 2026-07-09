@@ -22,6 +22,10 @@ export const PopupContainer = styled.dialog`
   color: ${theme.colors.text};
   margin: auto;
 
+  &:not([open]) {
+    display: none;
+  }
+
   &::backdrop {
     background: rgba(0, 0, 0, 0.4);
     backdrop-filter: blur(4px);
@@ -54,7 +58,7 @@ export const SidebarHeading = styled(Heading)`
   text-transform: uppercase;
   font-size: 14px;
   letter-spacing: 0.5px;
-  color: ${theme.colors.text};
+  color: ${theme.colors.text} !important;
 `;
 
 export const StyledSidebarHeading = styled(SidebarHeading)`

@@ -1,15 +1,18 @@
 import React from 'react';
-import type { UseFormRegister, FieldErrors } from 'react-hook-form';
+import type { UseFormRegister, FieldErrors, UseFormWatch } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
 import { FormGroup, Label, Input, Textarea, Select, FormError } from '../../ui';
 
 interface AITaskFormProps {
   register: UseFormRegister<any>;
   errors: FieldErrors;
+  watch: UseFormWatch<any>;
 }
 
-export const AITaskForm: React.FC<AITaskFormProps> = ({ register, errors }) => {
+export const AITaskForm: React.FC<AITaskFormProps> = ({ register, errors, watch }) => {
   const { t } = useTranslation();
+  const provider = watch('provider');
+  const showApiKey = provider !== 'ollama';
 
   return (
     <>
@@ -18,10 +21,23 @@ export const AITaskForm: React.FC<AITaskFormProps> = ({ register, errors }) => {
         <Select {...register('provider')}>
           <option value="openai">{t('sidebar.ai.providers.openai')}</option>
           <option value="anthropic">{t('sidebar.ai.providers.anthropic')}</option>
+          <option value="gemini">{t('sidebar.ai.providers.gemini', 'Google Gemini')}</option>
           <option value="ollama">{t('sidebar.ai.providers.ollama')}</option>
         </Select>
         {errors.provider && <FormError>{t(errors.provider.message as string)}</FormError>}
       </FormGroup>
+
+      {showApiKey && (
+        <FormGroup>
+          <Label>{t('sidebar.ai.apiKey', 'API Key')}</Label>
+          <Input 
+            type="password"
+            {...register('apiKey')} 
+            placeholder={t('sidebar.ai.apiKeyPlaceholder', 'Enter your API Key')} 
+          />
+          {errors.apiKey && <FormError>{t(errors.apiKey.message as string)}</FormError>}
+        </FormGroup>
+      )}
 
       <FormGroup>
         <Label>{t('sidebar.ai.model')}</Label>
@@ -49,11 +65,13 @@ export const AITaskForm: React.FC<AITaskFormProps> = ({ register, errors }) => {
         {errors.userPrompt && <FormError>{t(errors.userPrompt.message as string)}</FormError>}
       </FormGroup>
 
-      <FormGroup>
-        <Label>{t('sidebar.ai.baseUrl')}</Label>
-        <Input {...register('baseUrl')} placeholder={t('sidebar.ai.baseUrlPlaceholder')} />
-        {errors.baseUrl && <FormError>{t(errors.baseUrl.message as string)}</FormError>}
-      </FormGroup>
+      {provider === 'ollama' && (
+        <FormGroup>
+          <Label>{t('sidebar.ai.baseUrl')}</Label>
+          <Input {...register('baseUrl')} placeholder={t('sidebar.ai.baseUrlPlaceholder')} />
+          {errors.baseUrl && <FormError>{t(errors.baseUrl.message as string)}</FormError>}
+        </FormGroup>
+      )}
     </>
   );
 };

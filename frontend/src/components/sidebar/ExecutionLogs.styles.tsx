@@ -265,7 +265,7 @@ export const StepDetail = styled.div`
 `;
 
 export const StyledSidebarHeading = styled(Heading)`
-  color: ${theme.colors.text};
+  color: ${theme.colors.text} !important;
   margin-bottom: 0;
 `;
 

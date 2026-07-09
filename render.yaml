@@ -1,0 +1,36 @@
+services:
+  - type: web
+    name: contentflow-api
+    env: node
+    rootDir: server
+    buildCommand: npm install && npm run build
+    startCommand: npm run start:api
+    envVars:
+      - key: DATABASE_URL
+        sync: false
+      - key: UPSTASH_REDIS_URL
+        sync: false
+      - key: CONTENTFUL_ACCESS_TOKEN
+        sync: false
+      - key: CONTENTFUL_SIGNING_SECRET
+        sync: false
+      - key: CONTENTFLOW_WEBHOOK_SECRET
+        sync: false
+
+  - type: worker
+    name: contentflow-worker
+    env: node
+    rootDir: server
+    buildCommand: npm install && npm run build
+    startCommand: npm run start:worker
+    envVars:
+      - key: DATABASE_URL
+        sync: false
+      - key: UPSTASH_REDIS_URL
+        sync: false
+      - key: CONTENTFUL_ACCESS_TOKEN
+        sync: false
+      - key: CONTENTFUL_SIGNING_SECRET
+        sync: false
+      - key: CONTENTFLOW_WEBHOOK_SECRET
+        sync: false

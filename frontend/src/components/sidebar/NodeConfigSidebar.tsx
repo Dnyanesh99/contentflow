@@ -66,6 +66,7 @@ export const NodeConfigSidebar: React.FC = () => {
     handleSubmit,
     reset,
     setValue,
+    watch,
     formState: { errors },
   } = useForm<any>({
     resolver: selectedNode
@@ -126,7 +127,7 @@ export const NodeConfigSidebar: React.FC = () => {
         )}
 
         {selectedNode.data.type === 'LLM.Prompt' && (
-          <AITaskForm register={register} errors={errors} />
+          <AITaskForm register={register} errors={errors} watch={watch} />
         )}
 
         {selectedNode.data.type === 'Contentful.WriteBack' && (

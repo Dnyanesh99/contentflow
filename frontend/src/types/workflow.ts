@@ -18,10 +18,11 @@ export interface SlackNodeData extends BaseNodeData {
 
 export interface AITaskNodeData extends BaseNodeData {
   type: 'LLM.Prompt';
-  provider: 'openai' | 'anthropic' | 'ollama';
+  provider: 'openai' | 'anthropic' | 'ollama' | 'gemini';
   model: string;
   systemPrompt?: string;
   userPrompt: string;
+  apiKey?: string;
   baseUrl?: string;
 }
 

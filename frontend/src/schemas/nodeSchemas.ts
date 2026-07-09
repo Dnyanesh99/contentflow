@@ -21,10 +21,11 @@ export const nodeSchemaRegistry: Record<string, z.ZodTypeAny> = {
   }),
   'LLM.Prompt': z.object({
     ...baseSchema,
-    provider: z.enum(['openai', 'anthropic', 'ollama']),
+    provider: z.enum(['openai', 'anthropic', 'ollama', 'gemini']),
     model: z.string().min(1, 'sidebar.validation.aiModelRequired'),
     systemPrompt: z.string().optional(),
     userPrompt: z.string().min(1, 'sidebar.validation.aiPromptRequired'),
+    apiKey: z.string().optional(),
     baseUrl: z.string().optional(),
   }),
   'Contentful.WriteBack': z.object({

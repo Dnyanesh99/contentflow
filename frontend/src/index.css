@@ -137,3 +137,19 @@ body {
     transition-duration: 0.01ms !important;
   }
 }
+
+/* ─── Contentful Modal/Dialog Dark Mode Overrides ────────────────────────────── */
+
+div[class*="f36-modal"] {
+  background-color: #111827 !important;
+  color: #F9FAFB !important;
+}
+
+div[class*="f36-modal"] h1,
+div[class*="f36-modal"] h2,
+div[class*="f36-modal"] p,
+div[class*="f36-modal"] span,
+div[class*="f36-modal"] button {
+  color: #F9FAFB !important;
+}
+
