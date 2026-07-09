@@ -8,7 +8,9 @@ import { ENV } from './config/env.js';
 
 import { CONSTANTS } from './config/constants.js';
 
-export const app = express();
+const app = express();
+export { app };
+export default app;
 
 app.use(express.json({
   type: ['application/json', CONSTANTS.CONTENTFUL_MANAGEMENT_CONTENT_TYPE],
