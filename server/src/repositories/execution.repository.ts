@@ -1,5 +1,5 @@
-import { pool } from '../db/pool';
-import { ExecutionStatus, Execution } from '../schemas/execution.schema';
+import { pool } from '../db/pool.js';
+import { ExecutionStatus, Execution } from '../schemas/execution.schema.js';
 
 export type RecentExecution = Execution & { workflow_name: string };
 

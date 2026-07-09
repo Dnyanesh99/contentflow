@@ -6,12 +6,12 @@
   "scripts": {
     "build": "tsc",
     "start": "node dist/server.js",
-    "test": "jest"
+    "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "type": "commonjs",
+  "type": "module",
   "dependencies": {
     "@ai-sdk/anthropic": "^4.0.8",
     "@ai-sdk/google": "^4.0.10",

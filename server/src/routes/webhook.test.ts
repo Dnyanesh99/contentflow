@@ -1,11 +1,19 @@
 import request from 'supertest';
-import { app } from '../server';
+import { jest } from '@jest/globals';
 
-jest.mock('../queue/producer', () => ({
+jest.unstable_mockModule('../queue/producer.js', () => ({
   enqueueWorkflowJob: jest.fn().mockResolvedValue(true),
+  getBaseUrl: jest.fn().mockReturnValue('http://localhost'),
+  qstashClient: {},
 }));
 
 describe('Webhook Routes', () => {
+  let app: any;
+
+  beforeAll(async () => {
+    const mod = await import('../server.js');
+    app = mod.app;
+  });
   describe('POST /api/webhooks/contentful', () => {
     it('should return 202 Accepted for a valid payload and return a correlation_id', async () => {
       const validPayload = {
@@ -50,7 +58,7 @@ describe('Webhook Routes', () => {
     });
 
     it('should return 401 when in production and no secrets are configured', async () => {
-      const { ENV } = require('../config/env');
+      const { ENV } = await import('../config/env.js');
       const originalNodeEnv = ENV.NODE_ENV;
       ENV.NODE_ENV = 'production';
 

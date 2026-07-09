@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import { createExecutionController } from '../controllers/execution.controller';
+import { createExecutionController } from '../controllers/execution.controller.js';
 
 const router = Router();
 const executionController = createExecutionController();

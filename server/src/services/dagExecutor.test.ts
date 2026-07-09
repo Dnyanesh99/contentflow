@@ -1,12 +1,12 @@
-import { executeDAG } from './dagExecutor';
-import { WorkflowDefinition } from '../schemas/workflow.schema';
+import { jest } from '@jest/globals';
+import { z } from 'zod';
+import { WorkflowDefinition } from '../schemas/workflow.schema.js';
 
 // Mock global fetch to prevent actual network calls during tests
 const mockFetch = jest.fn();
-global.fetch = mockFetch;
+global.fetch = mockFetch as any;
 
-jest.mock('../integrations/ai.integration', () => {
-  const { z } = require('zod');
+jest.unstable_mockModule('../integrations/ai.integration.js', () => {
   return {
     AITaskConfigSchema: z.object({}).passthrough(),
     handleAIPrompt: jest.fn().mockResolvedValue({ text: 'Mocked AI translation', success: true }),
@@ -14,6 +14,12 @@ jest.mock('../integrations/ai.integration', () => {
 });
 
 describe('DAG Executor Engine', () => {
+  let executeDAG: any;
+
+  beforeAll(async () => {
+    const mod = await import('./dagExecutor.js');
+    executeDAG = mod.executeDAG;
+  });
   beforeEach(() => {
     mockFetch.mockReset();
     mockFetch.mockResolvedValue({

@@ -1,4 +1,4 @@
-import { ExecutionRepository } from '../repositories/execution.repository';
+import { ExecutionRepository } from '../repositories/execution.repository.js';
 
 export const startLogRetentionCleanup = (): void => {
   const CLEANUP_INTERVAL = 24 * 60 * 60 * 1000;

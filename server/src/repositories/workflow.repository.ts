@@ -1,5 +1,5 @@
-import { pool } from '../db/pool';
-import { Workflow } from '../schemas/workflow.schema';
+import { pool } from '../db/pool.js';
+import { Workflow } from '../schemas/workflow.schema.js';
 
 export class WorkflowRepository {
   static async createOrUpdate(id: string, name: string, trigger_type: string, definition: any, is_active: boolean): Promise<Workflow> {

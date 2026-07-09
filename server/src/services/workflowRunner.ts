@@ -1,9 +1,9 @@
-import { ExecutionRepository } from '../repositories/execution.repository';
-import { executeDAG } from './dagExecutor';
-import { WorkflowDefinition } from '../schemas/workflow.schema';
-import { scrubPII } from '../utils/scrub';
+import { ExecutionRepository } from '../repositories/execution.repository.js';
+import { executeDAG } from './dagExecutor.js';
+import { WorkflowDefinition } from '../schemas/workflow.schema.js';
+import { scrubPII } from '../utils/scrub.js';
 import { v4 as uuidv4 } from 'uuid';
-import { ExecutionStatus } from '../schemas/execution.schema';
+import { ExecutionStatus } from '../schemas/execution.schema.js';
 
 export const runWorkflowExecution = async (
   workflowId: string,
