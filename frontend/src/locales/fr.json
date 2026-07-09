@@ -1,0 +1,114 @@
+{
+  "header": {
+    "title": "ContentFlow",
+    "namePlaceholder": "Nom du Workflow",
+    "loadWorkflow": "-- Charger un Workflow --",
+    "noWorkflows": "Aucun workflow trouvé",
+    "new": "Nouveau",
+    "delete": "Supprimer",
+    "testTrigger": "Tester le Déclencheur",
+    "deploy": "Déployer",
+    "deploying": "Déploiement...",
+    "deleteTitle": "Supprimer le Workflow",
+    "deleteConfirm": "Êtes-vous sûr de vouloir supprimer le workflow \"{{name}}\" ? Cette action est irréversible.",
+    "cancel": "Annuler",
+    "errorEmpty": "Impossible de déployer un workflow vide.",
+    "errorNoTrigger": "Le workflow doit contenir un nœud déclencheur Contentful (Trigger).",
+    "deploySuccess": "Workflow déployé avec succès !",
+    "deleteSuccess": "Workflow supprimé.",
+    "webhookTriggered": "Déclencheur activé ! Vérifiez les journaux."
+  },
+  "palette": {
+    "title": "Ajouter un Nœud",
+    "trigger": "Contentful Trigger",
+    "slack": "Notification Slack",
+    "llm": "Invite LLM",
+    "writeback": "Contentful Writeback",
+    "customCode": "Code Personnalisé",
+    "errorOnlyOneTrigger": "Un seul nœud déclencheur Contentful est autorisé par workflow."
+  },
+  "sidebar": {
+    "close": "Fermer",
+    "save": "Enregistrer la Configuration",
+    "nodeLabel": "Étiquette du Nœud",
+    "nodeTitlePlaceholder": "Titre du nœud",
+    "validation": {
+      "labelRequired": "L'étiquette est requise",
+      "slackUrlRequired": "L'URL du Webhook est requise",
+      "slackUrlInvalid": "Doit être une URL de Webhook valide",
+      "slackTemplateRequired": "Le modèle de message est requis",
+      "aiModelRequired": "Le nom du modèle est requis",
+      "aiPromptRequired": "L'invite de l'utilisateur est requise",
+      "cfEntryRequired": "L'identifiant de l'entrée est requis",
+      "cfFieldRequired": "Le nom du champ est requis",
+      "cfLocaleRequired": "La langue est requise",
+      "cfValueRequired": "La valeur de réécriture est requise"
+    },
+    "trigger": {
+      "contentType": "Filtre par Type de Contenu",
+      "contentTypePlaceholder": "ex: blogPost",
+      "eventAction": "Action de l'Événement",
+      "anyEvent": "Tout Événement",
+      "publish": "Publier",
+      "unpublish": "Dépublier",
+      "saveCreate": "Enregistrer / Créer",
+      "archive": "Archiver",
+      "targetField": "Champ Cible Modifié",
+      "targetFieldPlaceholder": "ex: fields.title"
+    },
+    "slack": {
+      "webhookUrl": "URL du Webhook Slack",
+      "webhookPlaceholder": "https://hooks.slack.com/services/...",
+      "messageTemplate": "Modèle de Message",
+      "messagePlaceholder": "Nouvel article : {{fields.title}}"
+    },
+    "ai": {
+      "provider": "Fournisseur",
+      "model": "Nom du Modèle",
+      "modelPlaceholder": "ex: gpt-4o, claude-3-5-sonnet, llama3",
+      "systemPrompt": "Instructions / Invite Système",
+      "systemPlaceholder": "Vous êtes un traducteur expert...",
+      "userPrompt": "Invite Utilisateur / Entrée",
+      "userPlaceholder": "{{fields.title}}",
+      "baseUrl": "URL de Base Personnalisée (Ollama)",
+      "baseUrlPlaceholder": "ex: http://localhost:11434/v1"
+    },
+    "writeback": {
+      "entryId": "ID de l'Entrée",
+      "entryIdPlaceholder": "ex: {{sys.id}}",
+      "field": "Nom d'API du Champ",
+      "fieldPlaceholder": "ex: title",
+      "locale": "Code de Langue",
+      "localePlaceholder": "ex: es-ES",
+      "value": "Valeur de Réécriture",
+      "valuePlaceholder": "ex: {{LLM.Prompt.text}}"
+    },
+    "code": {
+      "title": "Logique Personnalisée (JavaScript)"
+    }
+  },
+  "logs": {
+    "title": "Exécutions",
+    "showLogs": "Afficher les Logs",
+    "closeLogs": "Fermer les Logs",
+    "filterAll": "Tous",
+    "filterSuccess": "Réussis",
+    "filterFailed": "Échoués",
+    "empty": "Aucune trace d'exécution trouvée. Déployez votre workflow et testez-le !",
+    "error": "Erreur lors de la récupération des traces.",
+    "steps": "Étapes d'Exécution ({{count}})",
+    "noSteps": "Aucune étape enregistrée.",
+    "errorLabel": "Erreur :",
+    "outputLabel": "Sortie :",
+    "duration": "Durée",
+    "time": {
+      "justNow": "à l'instant",
+      "m_ago": "m",
+      "h_ago": "h",
+      "d_ago": "j"
+    }
+  },
+  "canvas": {
+    "loading": "Chargement du moteur graphique..."
+  }
+}

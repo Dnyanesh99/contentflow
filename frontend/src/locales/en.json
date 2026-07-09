@@ -1,0 +1,134 @@
+{
+  "header": {
+    "title": "ContentFlow",
+    "namePlaceholder": "Workflow Name",
+    "loadWorkflow": "-- Load Workflow --",
+    "noWorkflows": "No workflows found",
+    "new": "New",
+    "delete": "Delete",
+    "testTrigger": "Test Trigger",
+    "deploy": "Deploy",
+    "deploying": "Deploying...",
+    "deleteTitle": "Delete Workflow",
+    "deleteConfirm": "Are you sure you want to delete the workflow \"{{name}}\"? This action cannot be undone.",
+    "cancel": "Cancel",
+    "errorEmpty": "Cannot deploy an empty workflow.",
+    "errorNoTrigger": "Workflow must contain a Contentful Trigger node.",
+    "deploySuccess": "Workflow deployed successfully!",
+    "deleteSuccess": "Workflow deleted.",
+    "webhookTriggered": "Webhook triggered! Check logs.",
+    "aria": {
+      "workflowName": "Workflow Name",
+      "selectLanguage": "Select Language",
+      "loadWorkflow": "Load Workflow"
+    },
+    "languages": {
+      "en": "EN",
+      "de": "DE",
+      "fr": "FR"
+    }
+  },
+  "palette": {
+    "title": "Add Node",
+    "trigger": "Contentful Trigger",
+    "slack": "Slack Notification",
+    "llm": "LLM Prompt",
+    "writeback": "Contentful Writeback",
+    "customCode": "Custom Code",
+    "errorOnlyOneTrigger": "Only one Contentful Trigger node is allowed per workflow."
+  },
+  "sidebar": {
+    "close": "Close",
+    "save": "Save Configuration",
+    "nodeLabel": "Node Label",
+    "nodeTitlePlaceholder": "Node title",
+    "validation": {
+      "labelRequired": "Label is required",
+      "slackUrlRequired": "Webhook URL is required",
+      "slackUrlInvalid": "Must be a valid Webhook URL",
+      "slackTemplateRequired": "Message template is required",
+      "aiModelRequired": "Model name is required",
+      "aiPromptRequired": "User prompt is required",
+      "cfEntryRequired": "Entry ID is required",
+      "cfFieldRequired": "Field name is required",
+      "cfLocaleRequired": "Locale is required",
+      "cfValueRequired": "Writeback value/template is required"
+    },
+    "trigger": {
+      "contentType": "Content Type Filter",
+      "contentTypePlaceholder": "e.g. blogPost",
+      "eventAction": "Webhook Event Action",
+      "anyEvent": "Any Event",
+      "publish": "Publish",
+      "unpublish": "Unpublish",
+      "saveCreate": "Save / Create",
+      "archive": "Archive",
+      "targetField": "Target Changed Field",
+      "targetFieldPlaceholder": "e.g. fields.title"
+    },
+    "slack": {
+      "webhookUrl": "Slack Webhook URL",
+      "webhookPlaceholder": "https://hooks.slack.com/services/...",
+      "messageTemplate": "Message Template",
+      "messagePlaceholder": "New article: {{fields.title}}"
+    },
+    "ai": {
+      "provider": "Provider",
+      "providers": {
+        "openai": "OpenAI",
+        "anthropic": "Anthropic",
+        "ollama": "Ollama (Local)"
+      },
+      "model": "Model Name",
+      "modelPlaceholder": "e.g. gpt-4o, claude-3-5-sonnet, llama3",
+      "systemPrompt": "System Prompt (Instructions)",
+      "systemPlaceholder": "You are an expert translator...",
+      "userPrompt": "User Prompt / Input",
+      "userPlaceholder": "{{fields.title}}",
+      "baseUrl": "Custom Base URL (For Ollama)",
+      "baseUrlPlaceholder": "e.g. http://localhost:11434/v1"
+    },
+    "writeback": {
+      "entryId": "Entry ID",
+      "entryIdPlaceholder": "e.g. {{sys.id}}",
+      "field": "Field API Name",
+      "fieldPlaceholder": "e.g. title",
+      "locale": "Locale Key",
+      "localePlaceholder": "e.g. es-ES",
+      "value": "Writeback Value",
+      "valuePlaceholder": "e.g. {{LLM.Prompt.text}}"
+    },
+    "code": {
+      "title": "Custom Logic (JavaScript)"
+    }
+  },
+  "logs": {
+    "title": "Executions",
+    "showLogs": "Show Logs",
+    "closeLogs": "Close Logs",
+    "filterAll": "All",
+    "filterSuccess": "Success",
+    "filterFailed": "Failed",
+    "empty": "No execution traces found. Deploy your workflow and test it!",
+    "error": "Error fetching traces.",
+    "steps": "Execution Steps ({{count}})",
+    "noSteps": "No step logs recorded.",
+    "errorLabel": "Error:",
+    "outputLabel": "Output:",
+    "duration": "Duration",
+    "time": {
+      "justNow": "just now",
+      "m_ago": "m ago",
+      "h_ago": "h ago",
+      "d_ago": "d ago"
+    },
+    "aria": {
+      "close": "Close logs panel"
+    }
+  },
+  "canvas": {
+    "loading": "Loading Graph Engine...",
+    "deleteNode": "Delete node",
+    "deleteNodeAria": "Delete {{label}} node"
+  }
+}
