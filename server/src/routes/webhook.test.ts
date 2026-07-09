@@ -2,8 +2,8 @@ import request from 'supertest';
 import { jest } from '@jest/globals';
 
 jest.unstable_mockModule('../queue/producer.js', () => ({
-  enqueueWorkflowJob: jest.fn().mockResolvedValue(true),
-  getBaseUrl: jest.fn().mockReturnValue('http://localhost'),
+  enqueueWorkflowJob: jest.fn<any>().mockResolvedValue(true),
+  getBaseUrl: jest.fn<any>().mockReturnValue('http://localhost'),
   qstashClient: {},
 }));
 

@@ -3,13 +3,13 @@ import { z } from 'zod';
 import { WorkflowDefinition } from '../schemas/workflow.schema.js';
 
 // Mock global fetch to prevent actual network calls during tests
-const mockFetch = jest.fn();
+const mockFetch = jest.fn<any>();
 global.fetch = mockFetch as any;
 
 jest.unstable_mockModule('../integrations/ai.integration.js', () => {
   return {
     AITaskConfigSchema: z.object({}).passthrough(),
-    handleAIPrompt: jest.fn().mockResolvedValue({ text: 'Mocked AI translation', success: true }),
+    handleAIPrompt: jest.fn<any>().mockResolvedValue({ text: 'Mocked AI translation', success: true }),
   };
 });
 
