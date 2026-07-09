@@ -1,0 +1,134 @@
+{
+  "header": {
+    "title": "ContentFlow",
+    "namePlaceholder": "Name des Workflows",
+    "loadWorkflow": "-- Workflow laden --",
+    "noWorkflows": "Keine Workflows gefunden",
+    "new": "Neu",
+    "delete": "Löschen",
+    "testTrigger": "Test-Trigger",
+    "deploy": "Bereitstellen",
+    "deploying": "Wird bereitgestellt...",
+    "deleteTitle": "Workflow löschen",
+    "deleteConfirm": "Sind Sie sicher, dass Sie den Workflow \"{{name}}\" löschen möchten? Diese Aktion kann nicht rückgängig gemacht werden.",
+    "cancel": "Abbrechen",
+    "errorEmpty": "Ein leerer Workflow kann nicht bereitgestellt werden.",
+    "errorNoTrigger": "Der Workflow muss einen Contentful-Trigger-Knoten enthalten.",
+    "deploySuccess": "Workflow erfolgreich bereitgestellt!",
+    "deleteSuccess": "Workflow gelöscht.",
+    "webhookTriggered": "Webhook ausgelöst! Protokolle prüfen.",
+    "aria": {
+      "workflowName": "Workflow-Name",
+      "selectLanguage": "Sprache auswählen",
+      "loadWorkflow": "Workflow laden"
+    },
+    "languages": {
+      "en": "EN",
+      "de": "DE",
+      "fr": "FR"
+    }
+  },
+  "palette": {
+    "title": "Knoten hinzufügen",
+    "trigger": "Contentful Trigger",
+    "slack": "Slack-Benachrichtigung",
+    "llm": "LLM-Prompt",
+    "writeback": "Contentful Writeback",
+    "customCode": "Benutzerdefinierter Code",
+    "errorOnlyOneTrigger": "Pro Workflow ist nur ein Contentful-Trigger-Knoten zulässig."
+  },
+  "sidebar": {
+    "close": "Schließen",
+    "save": "Konfiguration speichern",
+    "nodeLabel": "Knotenbezeichnung",
+    "nodeTitlePlaceholder": "Knotentitel",
+    "validation": {
+      "labelRequired": "Bezeichnung ist erforderlich",
+      "slackUrlRequired": "Webhook-URL ist erforderlich",
+      "slackUrlInvalid": "Muss eine gültige Webhook-URL sein",
+      "slackTemplateRequired": "Nachrichtenvorlage ist erforderlich",
+      "aiModelRequired": "Modellname ist erforderlich",
+      "aiPromptRequired": "Benutzer-Prompt ist erforderlich",
+      "cfEntryRequired": "Eintrags-ID ist erforderlich",
+      "cfFieldRequired": "Feldname ist erforderlich",
+      "cfLocaleRequired": "Gebietsschema ist erforderlich",
+      "cfValueRequired": "Rückschreibwert/-vorlage ist erforderlich"
+    },
+    "trigger": {
+      "contentType": "Inhaltstyp-Filter",
+      "contentTypePlaceholder": "z.B. blogPost",
+      "eventAction": "Webhook-Ereignisaktion",
+      "anyEvent": "Beliebiges Ereignis",
+      "publish": "Veröffentlichen",
+      "unpublish": "Veröffentlichung aufheben",
+      "saveCreate": "Speichern / Erstellen",
+      "archive": "Archivieren",
+      "targetField": "Geändertes Zielfeld",
+      "targetFieldPlaceholder": "z.B. fields.title"
+    },
+    "slack": {
+      "webhookUrl": "Slack-Webhook-URL",
+      "webhookPlaceholder": "https://hooks.slack.com/services/...",
+      "messageTemplate": "Nachrichtenvorlage",
+      "messagePlaceholder": "Neuer Artikel: {{fields.title}}"
+    },
+    "ai": {
+      "provider": "Anbieter",
+      "providers": {
+        "openai": "OpenAI",
+        "anthropic": "Anthropic",
+        "ollama": "Ollama (Lokal)"
+      },
+      "model": "Modellname",
+      "modelPlaceholder": "z. B. gpt-4o, claude-3-5-sonnet, llama3",
+      "systemPrompt": "System-Prompt (Anweisungen)",
+      "systemPlaceholder": "Sie sind ein erfahrener Übersetzer...",
+      "userPrompt": "Benutzer-Prompt / Eingabe",
+      "userPlaceholder": "{{fields.title}}",
+      "baseUrl": "Benutzerdefinierte Basis-URL (für Ollama)",
+      "baseUrlPlaceholder": "z.B. http://localhost:11434/v1"
+    },
+    "writeback": {
+      "entryId": "Eintrags-ID",
+      "entryIdPlaceholder": "z.B. {{sys.id}}",
+      "field": "Feld-API-Name",
+      "fieldPlaceholder": "z.B. title",
+      "locale": "Gebietsschema-Schlüssel",
+      "localePlaceholder": "z.B. es-ES",
+      "value": "Rückschreibwert",
+      "valuePlaceholder": "z.B. {{LLM.Prompt.text}}"
+    },
+    "code": {
+      "title": "Benutzerdefinierte Logik (JavaScript)"
+    }
+  },
+  "logs": {
+    "title": "Ausführungen",
+    "showLogs": "Protokolle anzeigen",
+    "closeLogs": "Protokolle schließen",
+    "filterAll": "Alle",
+    "filterSuccess": "Erfolgreich",
+    "filterFailed": "Fehlgeschlagen",
+    "empty": "Keine Ausführungsprotokolle gefunden. Stellen Sie Ihren Workflow bereit und testen Sie ihn!",
+    "error": "Fehler beim Abrufen der Protokolle.",
+    "steps": "Ausführungsschritte ({{count}})",
+    "noSteps": "Keine Schrittprotokolle aufgezeichnet.",
+    "errorLabel": "Fehler:",
+    "outputLabel": "Ausgabe:",
+    "duration": "Dauer",
+    "time": {
+      "justNow": "gerade eben",
+      "m_ago": "Min. her",
+      "h_ago": "Std. her",
+      "d_ago": "T. her"
+    },
+    "aria": {
+      "close": "Protokollbereich schließen"
+    }
+  },
+  "canvas": {
+    "loading": "Graph-Engine wird geladen...",
+    "deleteNode": "Knoten löschen",
+    "deleteNodeAria": "Knoten {{label}} löschen"
+  }
+}
