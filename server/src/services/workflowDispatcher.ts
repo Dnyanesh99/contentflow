@@ -1,6 +1,6 @@
 import { WorkflowRepository } from '../repositories/workflow.repository';
 import { WorkflowDefinition } from '../schemas/workflow.schema';
-import { workflowQueue } from '../queue/producer';
+import { qstashClient, getBaseUrl } from '../queue/producer';
 
 export const dispatchWebhookToWorkflows = async (
   payload: any,
@@ -36,10 +36,10 @@ export const dispatchWebhookToWorkflows = async (
       }
     }
 
-    await workflowQueue.add(
-      'execute-workflow',
-      { payload, correlationId, workflowId, definition },
-      { attempts: 5, backoff: { type: 'exponential', delay: 2000 } }
-    );
+    await qstashClient.publishJSON({
+      url: `${getBaseUrl()}/api/queue/execute-workflow`,
+      body: { payload, correlationId, workflowId, definition },
+      retries: 5
+    });
   }
 };

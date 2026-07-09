@@ -2,6 +2,7 @@ import express from 'express';
 import webhookRoutes from './routes/webhook.routes';
 import workflowRoutes from './routes/workflow.routes';
 import executionRoutes from './routes/execution.routes';
+import queueRoutes from './routes/queue.routes';
 import { errorHandler } from './middleware/errorHandler';
 import { ENV } from './config/env';
 
@@ -31,6 +32,7 @@ app.use((req, res, next) => {
 app.use('/api/webhooks', webhookRoutes);
 app.use('/api/workflows', workflowRoutes);
 app.use('/api/executions', executionRoutes);
+app.use('/api/queue', queueRoutes);
 
 app.use(errorHandler);
 

@@ -1,14 +1,21 @@
-import { Queue } from "bullmq";
-import { redisConnection } from "./connection";
+import { Client } from "@upstash/qstash";
+import { ENV } from "../config/env";
 
 export type WebhookPayload = Record<string, unknown>;
 
-export const workflowQueue = new Queue("workflow-queue", {
-  connection: redisConnection as unknown as any,
+export const qstashClient = new Client({
+  token: ENV.QSTASH_TOKEN,
 });
 
+export const getBaseUrl = () => {
+  if (ENV.VERCEL_URL && !ENV.VERCEL_URL.startsWith('http')) {
+    return `https://${ENV.VERCEL_URL}`;
+  }
+  return ENV.VERCEL_URL;
+};
+
 /**
- * Enqueues a webhook payload into BullMQ for asynchronous workflow processing.
+ * Enqueues a webhook payload into QStash for asynchronous workflow processing.
  */
 export const enqueueWorkflowJob = async (
   payload: WebhookPayload,
@@ -16,15 +23,10 @@ export const enqueueWorkflowJob = async (
   action?: string,
   contentType?: string,
 ) => {
-  return await workflowQueue.add(
-    "process-webhook",
-    { payload, correlationId, action, contentType },
-    {
-      attempts: 5, // Retry for rate limit tolerance
-      backoff: {
-        type: "exponential",
-        delay: 2000, // milliseconds
-      },
-    },
-  );
+  return await qstashClient.publishJSON({
+    url: `${getBaseUrl()}/api/queue/process-webhook`,
+    body: { payload, correlationId, action, contentType },
+    retries: 5,
+  });
 };
+

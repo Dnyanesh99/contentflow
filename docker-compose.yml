@@ -19,54 +19,21 @@ services:
       timeout: 5s
       retries: 5
 
-  redis:
-    image: public.ecr.aws/docker/library/redis:7-alpine
-    container_name: contentflow-redis
-    ports:
-      - "6379:6379"
-    volumes:
-      - redis_data:/data
-    healthcheck:
-      test: ["CMD", "redis-cli", "ping"]
-      interval: 5s
-      timeout: 5s
-      retries: 5
-
   api:
     build:
       context: ./server
       dockerfile: Dockerfile
     container_name: contentflow-api
-    command: npm run start:api
+    command: npm start
     ports:
       - "3000:3000"
     environment:
       - DATABASE_URL=${DATABASE_URL:-postgres://contentflow_user:local_dev_password@postgres:5432/contentflow}
-      - UPSTASH_REDIS_URL=${UPSTASH_REDIS_URL:-redis://redis:6379}
       - PORT=3000
     env_file:
       - server/src/.env
     depends_on:
       postgres:
-        condition: service_healthy
-      redis:
-        condition: service_healthy
-
-  worker:
-    build:
-      context: ./server
-      dockerfile: Dockerfile
-    container_name: contentflow-worker
-    command: npm run start:worker
-    environment:
-      - DATABASE_URL=${DATABASE_URL:-postgres://contentflow_user:local_dev_password@postgres:5432/contentflow}
-      - UPSTASH_REDIS_URL=${UPSTASH_REDIS_URL:-redis://redis:6379}
-    env_file:
-      - server/src/.env
-    depends_on:
-      postgres:
-        condition: service_healthy
-      redis:
         condition: service_healthy
 
   frontend:
@@ -81,4 +48,3 @@ services:
 
 volumes:
   postgres_data:
-  redis_data:
