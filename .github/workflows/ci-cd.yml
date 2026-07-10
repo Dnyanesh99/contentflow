@@ -11,7 +11,7 @@ jobs:
     name: Lint, Typecheck, and Test
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout Code4  \                                                                                                                                                                                                                                                                                                                                                ----.ooikmkmmmkmklnj nj
+      - name: Checkout Code
         uses: actions/checkout@v4
 
       - name: Setup Node.js
