@@ -1,5 +1,5 @@
 import { Request, Response, NextFunction } from 'express';
-import { ExecutionRepository } from '../repositories/execution.repository';
+import { ExecutionRepository } from '../repositories/execution.repository.js';
 import { z } from 'zod';
 
 const ExecutionQuerySchema = z.object({

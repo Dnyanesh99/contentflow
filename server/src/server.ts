@@ -1,14 +1,16 @@
 import express from 'express';
-import webhookRoutes from './routes/webhook.routes';
-import workflowRoutes from './routes/workflow.routes';
-import executionRoutes from './routes/execution.routes';
-import queueRoutes from './routes/queue.routes';
-import { errorHandler } from './middleware/errorHandler';
-import { ENV } from './config/env';
+import webhookRoutes from './routes/webhook.routes.js';
+import workflowRoutes from './routes/workflow.routes.js';
+import executionRoutes from './routes/execution.routes.js';
+import queueRoutes from './routes/queue.routes.js';
+import { errorHandler } from './middleware/errorHandler.js';
+import { ENV } from './config/env.js';
 
-import { CONSTANTS } from './config/constants';
+import { CONSTANTS } from './config/constants.js';
 
-export const app = express();
+const app = express();
+export { app };
+export default app;
 
 app.use(express.json({
   type: ['application/json', CONSTANTS.CONTENTFUL_MANAGEMENT_CONTENT_TYPE],
@@ -36,7 +38,11 @@ app.use('/api/queue', queueRoutes);
 
 app.use(errorHandler);
 
-if (require.main === module) {
+import { fileURLToPath } from 'url';
+
+// ... other imports ...
+
+if (process.argv[1] === fileURLToPath(import.meta.url)) {
   const PORT = ENV.PORT;
   app.listen(PORT, () => {
     console.log(`Server listening on port ${PORT}`);

@@ -1,6 +1,6 @@
 import { Request, Response, NextFunction } from 'express';
-import { dispatchWebhookToWorkflows } from '../services/workflowDispatcher';
-import { runWorkflowExecution } from '../services/workflowRunner';
+import { dispatchWebhookToWorkflows } from '../services/workflowDispatcher.js';
+import { runWorkflowExecution } from '../services/workflowRunner.js';
 
 export const processWebhookJob = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
   try {

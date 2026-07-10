@@ -1,7 +1,7 @@
 import { Request, Response, NextFunction } from "express";
 import { randomUUID } from "crypto";
-import { enqueueWorkflowJob } from "../queue/producer";
-import { ContentfulPayloadSchema } from "../schemas/webhook.schema";
+import { enqueueWorkflowJob } from "../queue/producer.js";
+import { ContentfulPayloadSchema } from "../schemas/webhook.schema.js";
 
 export const createWebhookController = () => {
   const handleContentfulWebhook = async (

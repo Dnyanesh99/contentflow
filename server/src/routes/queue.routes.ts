@@ -1,8 +1,8 @@
 import { Router } from 'express';
-import { validate } from '../middleware/validate';
-import { verifyQStashSignature } from '../middleware/qstashAuth';
-import { processWebhookJob, executeWorkflowJob } from '../controllers/queue.controller';
-import { ProcessWebhookJobSchema, ExecuteWorkflowJobSchema } from '../schemas/queue.schema';
+import { validate } from '../middleware/validate.js';
+import { verifyQStashSignature } from '../middleware/qstashAuth.js';
+import { processWebhookJob, executeWorkflowJob } from '../controllers/queue.controller.js';
+import { ProcessWebhookJobSchema, ExecuteWorkflowJobSchema } from '../schemas/queue.schema.js';
 
 const router = Router();
 

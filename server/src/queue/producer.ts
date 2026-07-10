@@ -1,5 +1,5 @@
 import { Client } from "@upstash/qstash";
-import { ENV } from "../config/env";
+import { ENV } from "../config/env.js";
 
 export type WebhookPayload = Record<string, unknown>;
 

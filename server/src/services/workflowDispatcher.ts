@@ -1,6 +1,6 @@
-import { WorkflowRepository } from '../repositories/workflow.repository';
-import { WorkflowDefinition } from '../schemas/workflow.schema';
-import { qstashClient, getBaseUrl } from '../queue/producer';
+import { WorkflowRepository } from '../repositories/workflow.repository.js';
+import { WorkflowDefinition } from '../schemas/workflow.schema.js';
+import { qstashClient, getBaseUrl } from '../queue/producer.js';
 
 export const dispatchWebhookToWorkflows = async (
   payload: any,

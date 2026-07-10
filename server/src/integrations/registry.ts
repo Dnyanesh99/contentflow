@@ -1,7 +1,7 @@
-import { handleSlackNotify } from "./slack.integration";
-import { handleContentfulWriteBack } from "./contentful.integration";
-import { handleCustomCode } from "./custom.integration";
-import { handleAIPrompt, AITaskConfigSchema } from "./ai.integration";
+import { handleSlackNotify } from "./slack.integration.js";
+import { handleContentfulWriteBack } from "./contentful.integration.js";
+import { handleCustomCode } from "./custom.integration.js";
+import { handleAIPrompt, AITaskConfigSchema } from "./ai.integration.js";
 
 type IntegrationHandler = (
   nodeData: Record<string, unknown>,

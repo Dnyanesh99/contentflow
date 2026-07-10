@@ -1,7 +1,7 @@
 import { Router } from 'express';
-import { validate } from '../middleware/validate';
-import { WorkflowSchema } from '../schemas/workflow.schema';
-import { createWorkflowController } from '../controllers/workflow.controller';
+import { validate } from '../middleware/validate.js';
+import { WorkflowSchema } from '../schemas/workflow.schema.js';
+import { createWorkflowController } from '../controllers/workflow.controller.js';
 
 const router = Router();
 const workflowController = createWorkflowController();

@@ -1,6 +1,6 @@
 import { Request, Response, NextFunction } from 'express';
-import { WorkflowRepository } from '../repositories/workflow.repository';
-import { WorkflowSchema } from '../schemas/workflow.schema';
+import { WorkflowRepository } from '../repositories/workflow.repository.js';
+import { WorkflowSchema } from '../schemas/workflow.schema.js';
 import { z } from 'zod';
 
 const IdParamSchema = z.object({

@@ -1,6 +1,6 @@
 import { Request, Response, NextFunction } from "express";
 import { createHmac, timingSafeEqual } from "crypto";
-import { ENV } from "../config/env";
+import { ENV } from "../config/env.js";
 
 /**
  * Middleware to authenticate incoming webhooks.

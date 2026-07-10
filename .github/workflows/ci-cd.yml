@@ -14,30 +14,20 @@ jobs:
       - name: Checkout Code
         uses: actions/checkout@v4
 
-      - name: Setup Node.js
+      - name: Setup Node.js and Cache
         uses: actions/setup-node@v4
         with:
-          node-version: "20"
-
-      - name: Cache server dependencies
-        uses: actions/setup-node@v4
-        with:
-          node-version: "20"
+          node-version: "24"
           cache: "npm"
-          cache-dependency-path: server/package-lock.json
-
-      - name: Cache frontend dependencies
-        uses: actions/setup-node@v4
-        with:
-          node-version: "20"
-          cache: "npm"
-          cache-dependency-path: frontend/package-lock.json
+          cache-dependency-path: |
+            server/package-lock.json
+            frontend/package-lock.json
 
       - name: Install Dependencies (Server)
-        run: cd server && npm ci
+        run: cd server && npm install
 
       - name: Install Dependencies (Frontend)
-        run: cd frontend && npm ci
+        run: cd frontend && npm install
 
       - name: Lint & Test (Backend)
         run: |

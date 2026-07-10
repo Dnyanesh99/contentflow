@@ -1,5 +1,5 @@
-import { WorkflowSchema } from './workflow.schema';
-import { ExecutionSchema, ExecutionStatus } from './execution.schema';
+import { WorkflowSchema } from './workflow.schema.js';
+import { ExecutionSchema, ExecutionStatus } from './execution.schema.js';
 
 describe('Zod Schemas', () => {
   describe('WorkflowSchema', () => {

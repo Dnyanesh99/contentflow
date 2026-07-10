@@ -1,6 +1,6 @@
-import { IntegrationRegistry } from "../integrations/registry";
-import { WorkflowDefinition } from "../schemas/workflow.schema";
-import { ExecutionLogStep } from "../schemas/execution.schema";
+import { IntegrationRegistry } from "../integrations/registry.js";
+import { WorkflowDefinition } from "../schemas/workflow.schema.js";
+import { ExecutionLogStep } from "../schemas/execution.schema.js";
 
 export type WebhookPayload = Record<string, unknown>;
 

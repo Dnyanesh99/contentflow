@@ -1,8 +1,8 @@
 import { Router } from 'express';
-import { validate } from '../middleware/validate';
-import { verifyWebhookSecret } from '../middleware/webhookAuth';
-import { createWebhookController } from '../controllers/webhook.controller';
-import { ContentfulWebhookSchema } from '../schemas/webhook.schema';
+import { validate } from '../middleware/validate.js';
+import { verifyWebhookSecret } from '../middleware/webhookAuth.js';
+import { createWebhookController } from '../controllers/webhook.controller.js';
+import { ContentfulWebhookSchema } from '../schemas/webhook.schema.js';
 
 const router = Router();
 const webhookController = createWebhookController();

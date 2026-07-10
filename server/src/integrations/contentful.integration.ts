@@ -1,7 +1,7 @@
 import { z } from 'zod';
-import { resolveTemplate } from '../utils/templateResolver';
-import { ENV } from '../config/env';
-import { CONSTANTS } from '../config/constants';
+import { resolveTemplate } from '../utils/templateResolver.js';
+import { ENV } from '../config/env.js';
+import { CONSTANTS } from '../config/constants.js';
 
 const ContentfulNodeDataSchema = z.object({
   entryId: z.string().default('{{sys.id}}'),

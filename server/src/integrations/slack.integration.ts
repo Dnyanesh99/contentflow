@@ -1,5 +1,5 @@
 import { z } from 'zod';
-import { resolveTemplate } from '../utils/templateResolver';
+import { resolveTemplate } from '../utils/templateResolver.js';
 
 const SlackNodeDataSchema = z.object({
   webhookUrl: z.string().url('Invalid Webhook URL'),
