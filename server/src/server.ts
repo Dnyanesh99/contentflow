@@ -1,4 +1,5 @@
 import express from "express";
+import { fileURLToPath } from "url";
 import webhookRoutes from "./routes/webhook.routes.js";
 import workflowRoutes from "./routes/workflow.routes.js";
 import executionRoutes from "./routes/execution.routes.js";
@@ -49,8 +50,6 @@ app.use("/api/executions", executionRoutes);
 app.use("/api/queue", queueRoutes);
 
 app.use(errorHandler);
-
-import { fileURLToPath } from "url";
 
 if (process.argv[1] === fileURLToPath(import.meta.url)) {
   const PORT = ENV.PORT;
