@@ -1,5 +1,6 @@
 import { Request, Response, NextFunction } from "express";
-import { createHmac, timingSafeEqual } from "crypto";
+import { timingSafeEqual } from "crypto";
+import { verifyRequest } from "@contentful/node-apps-toolkit";
 import { ENV } from "../config/env.js";
 
 /**
@@ -18,25 +19,31 @@ export const verifyWebhookSecret = (
 
   if (signingSecret && signatureHeader) {
     const rawBody = (req as { rawBody?: string }).rawBody || "";
-    const hmac = createHmac("sha256", signingSecret);
-    hmac.update(rawBody);
-    const computedSignature = hmac.digest("hex");
 
-    const signatureBuffer = Buffer.from(signatureHeader);
-    const computedBuffer = Buffer.from(computedSignature);
+    try {
+      const isValid = verifyRequest(signingSecret, {
+        path: req.originalUrl,
+        method: req.method as "GET" | "PATCH" | "HEAD" | "POST" | "DELETE" | "OPTIONS" | "PUT",
+        headers: req.headers as Record<string, string>,
+        body: rawBody,
+      });
 
-    if (
-      signatureBuffer.length !== computedBuffer.length ||
-      !timingSafeEqual(signatureBuffer, computedBuffer)
-    ) {
-      console.warn("[Webhook Auth] Cryptographic signature mismatch");
+      if (!isValid) {
+        console.warn("[Webhook Auth] Cryptographic signature mismatch");
+        res
+          .status(401)
+          .json({ error: "Unauthorized: Invalid Contentful Webhook Signature" });
+        return;
+      }
+
+      return next();
+    } catch (err) {
+      console.error("[Webhook Auth] Error verifying signature", err);
       res
         .status(401)
         .json({ error: "Unauthorized: Invalid Contentful Webhook Signature" });
       return;
     }
-
-    return next();
   }
 
   const tokenSecret = ENV.CONTENTFLOW_WEBHOOK_SECRET;
